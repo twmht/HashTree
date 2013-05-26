@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
     file_hash = root.get_final_hash()
 
-    print "Hash of file is " + str(hex(file_hash))[:-1]
+    print "Hash of file is " + str(hex(file_hash))[:-1] if str(hex(file_hash))[-1] == 'L' else str(hex(file_hash))
 
     if file_hash == input_hash:
         print "File's hash is equivalent to input hash"
