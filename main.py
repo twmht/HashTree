@@ -46,7 +46,7 @@ if __name__ == '__main__':
     else:
         diapason = root.find_similar_part(input_hash)
         if diapason is not None:
-            print "Hash of file's part from " + str(diapason[0]) + "byte to " + \
-                  str(diapason[1]) + "byte equivalent to input hash"
+            print "Hash of file's part from " + str(diapason[0]) + " byte to " + \
+                  str(diapason[1]) + " byte equivalent to input hash"
         else:
             print "File's hash hasn't equivalent part to input hash"
