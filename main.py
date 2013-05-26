@@ -32,6 +32,7 @@ if __name__ == '__main__':
     try:
         input_hash = int(sys.argv[2], 16)
     except ValueError:
+        input_hash = None
         hashValueError()
 
     root = HashTree(file_path)
