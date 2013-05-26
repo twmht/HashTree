@@ -74,10 +74,9 @@ class HashTree():
 
     def find_hash(self, input_hash):
         """
-        :type input_hash: int
+        :type input_hash: int or long
         :rtype: self.__TreeNode
         """
-        hash_node = None
         for hash_node in self.iterator_tree_node_pre_order():
             if hash_node.value == input_hash:
                 return hash_node
