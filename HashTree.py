@@ -56,7 +56,7 @@ class HashTree():
 
     def __get_hash_list(self, file_path, block_size):
         """
-        :rtype : list
+        :rtype: list
         :type block_size: int
         :type file_path: str or unicode
         """
@@ -75,7 +75,7 @@ class HashTree():
     def find_hash(self, input_hash):
         """
         :type input_hash: int
-        :return:
+        :rtype: self.__TreeNode
         """
         hash_node = None
         for hash_node in self.iterator_tree_node_pre_order():
@@ -85,6 +85,10 @@ class HashTree():
             return None
 
     def find_similar_part(self, input_hash):
+        """
+        :type input_hash:  int or long
+        :rtype: cortege (int, int)
+        """
         hash_left_leaf = hash_right_leaf = hash_node = self.find_hash(input_hash)
         if hash_node is None:
             return None
