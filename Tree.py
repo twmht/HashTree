@@ -2,27 +2,6 @@
 __author__ = 'Дмитрий'
 
 
-def print_tree_pre_order(root):
-    if root is not None:
-        print root.value
-        print_tree_pre_order(root.left_child)
-        print_tree_pre_order(root.right_child)
-
-
-def print_tree_post_order(root):
-    if root is not None:
-        print_tree_post_order(root.left_child)
-        print_tree_post_order(root.right_child)
-        print root.value
-
-
-def print_tree_in_order(root):
-    if root is not None:
-        print_tree_in_order(root.left_child)
-        print root.value
-        print_tree_in_order(root.right_child)
-
-
 class Tree:
     class __TreeNode:
         def __init__(self, value):
