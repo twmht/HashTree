@@ -1,12 +1,12 @@
 #coding: utf-8
 __author__ = 'Дмитрий'
-import sys
+from sys import argv
 import os
 from HashTree import HashTree
 
 
 def argumentsCountError(count):
-    print "Script takes exactly two arguments (" + str(count) + " given)"
+    print "Script takes exactly two arguments (%i given)" % count
     exit()
 
 
@@ -20,17 +20,17 @@ def hashValueError():
     exit()
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        argumentsCountError(len(sys.argv) - 1)
+    if len(argv) != 3:
+        argumentsCountError(len(argv) - 1)
 
-    file_path = sys.argv[1]
+    file_path = argv[1]
 
     if not os.path.exists(file_path):
         if not os.path.isfile(file_path):
             pathFileError()
 
     try:
-        input_hash = int(sys.argv[2], 16)
+        input_hash = int(argv[2], 16)
     except ValueError:
         input_hash = None
         hashValueError()
@@ -39,14 +39,13 @@ if __name__ == '__main__':
 
     file_hash = root.get_final_hash()
 
-    print "Hash of file is " + str(hex(file_hash))[:-1] if str(hex(file_hash))[-1] == 'L' else str(hex(file_hash))
+    print "Hash of file is %x" % file_hash
 
     if file_hash == input_hash:
         print "File's hash is equivalent to input hash"
     else:
         diapason = root.find_similar_part(input_hash)
         if diapason is not None:
-            print "Hash of file's part from " + str(diapason[0]) + " byte to " + \
-                  str(diapason[1]) + " byte equivalent to input hash"
+            print "Hash of file's part from %i byte to %i byte equivalent to input hash" % (diapason[0], diapason[1])
         else:
             print "File's hash hasn't equivalent part to input hash"
