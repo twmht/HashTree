@@ -109,21 +109,23 @@ class HashTree():
                     return self.__block_size * left_list_number, self.__block_size * (list_number + 1)
 
     def iterator_tree_node_pre_order(self):
-        if self.__root is not None:
-            node = self.__root
-            parents = []
-            while True:
-                parents.append(node)
-                yield node
-                if node.left_child is not None:
-                    node = node.left_child
-                elif node.right_child is not None:
-                    node = node.right_child
-                else:
-                    for parent in parents[-2::-1]:
-                        if parent.right_child is not None and not parent.right_child in parents:
-                            parents = parents[:parents.index(parent) + 1]
-                            node = parent.right_child
-                            break
-                    else:
+        if self.__root is None:
+            return
+
+        node = self.__root
+        parents = []
+        while True:
+            parents.append(node)
+            yield node
+            if node.left_child is not None:
+                node = node.left_child
+            elif node.right_child is not None:
+                node = node.right_child
+            else:
+                for parent in parents[-2::-1]:
+                    if parent.right_child is not None and not parent.right_child in parents:
+                        parents = parents[:parents.index(parent) + 1]
+                        node = parent.right_child
                         break
+                else:
+                    break
